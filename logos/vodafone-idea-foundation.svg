@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="72" fill="white"/>
+  <circle cx="128" cy="138" r="48" fill="#E60000"/>
+  <path d="M124 89c22 0 39 17 39 39 0 26-18 35-38 47-19 11-30 20-30 36 0 10 4 18 11 24H72c-8-9-12-21-12-35 0-30 19-45 42-58 20-11 25-17 25-28 0-8-6-14-14-14-9 0-16 7-16 16H66c0-30 25-55 58-55z" fill="white"/>
+  <text x="196" y="176" font-family="Arial, Helvetica, sans-serif" font-size="120" font-weight="700" fill="#4B286D">vi</text>
+  <text x="72" y="290" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#222">Vodafone Idea Foundation</text>
+  <text x="72" y="338" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="500" fill="#666">Cybersecurity Internship</text>
+</svg>
