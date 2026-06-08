@@ -62,7 +62,7 @@ To build the application for production:
 npm run build
 ```
 
-This compiles TypeScript and builds the optimized static assets into the `build/` directory.
+This compiles TypeScript and builds the optimized static assets into the `dist/` directory.
 
 ---
 
@@ -70,7 +70,7 @@ This compiles TypeScript and builds the optimized static assets into the `build/
 
 ```text
 sravan-portfolio/
-├── build/               # Compiled production assets (gitignored)
+├── dist/                # Compiled production assets (gitignored)
 ├── public/              # Static assets (favicon, video background)
 ├── src/                 # React + TypeScript Source code
 │   ├── components/      # Reusable UI components (Navbar, Hero, Skills, Projects, etc.)
@@ -99,28 +99,14 @@ To deploy:
 npm run deploy
 ```
 
-### Deploying to Netlify (Root Domain)
+### Deploying to Vercel or Netlify (Root Domain)
 
-If you want to deploy the portfolio to **Netlify** under a root domain (e.g., `yourname.netlify.app` or a custom domain), do the following:
+If you want to deploy the portfolio to **Vercel** or **Netlify** under a root domain (e.g., `sravan-portfolio.vercel.app` or a custom domain), the project is pre-configured for root hosting:
 
-1. **Adjust the Base Path**:
+1. **Vite Configuration**:
+   The `base` configuration in `vite.config.ts` is set to `/` and the output directory is `dist` (Vite defaults), which are automatically detected by Vercel and Netlify.
 
-   In `vite.config.ts`, change the `base` configuration to `/` so assets are loaded correctly from the domain root:
-
-   ```typescript
-   // vite.config.ts
-   export default defineConfig({
-     plugins: [react()],
-     base: "/", // Change from "/sravan-portfolio/" to "/" for Netlify root hosting
-     build: {
-       outDir: "build",
-     },
-     // ...
-   });
-   ```
-
-2. **Netlify Build Settings**:
-
-   * **Build Command**: `npm run build`
-   * **Publish Directory**: `build`
-   * **Base Directory**: (leave empty or set to root `/`)
+2. **Build Settings**:
+   * **Build Command**: `npm run build` (or `vite build`)
+   * **Output/Publish Directory**: `dist`
+   * **Install Command**: `npm install`
