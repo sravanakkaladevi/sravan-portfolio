@@ -63,7 +63,7 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <BrowserRouter basename="/sravan-portfolio">
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         {/* Restored Original Portfolio Navbar */}
         <Navbar />
         <Body>

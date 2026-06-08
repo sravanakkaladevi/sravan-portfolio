@@ -6,7 +6,7 @@ import autoprefixer from "autoprefixer";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/sravan-portfolio/",
+  base: process.env.VERCEL ? "/" : "/sravan-portfolio/",
   build: {
     outDir: "build",
   },
