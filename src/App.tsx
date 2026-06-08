@@ -71,7 +71,7 @@ function App() {
             <div className="w-full min-h-screen bg-[#080816] text-white">
               
               {/* Root Liquid Glass Hero Container */}
-              <div id="About" className="relative w-full h-screen overflow-hidden bg-[#080816]">
+              <div id="About" className="relative w-full min-h-screen overflow-hidden bg-[#080816] flex flex-col">
                 
                 {/* Default Background Particle Animations (Loaded instantly) */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
@@ -95,7 +95,7 @@ function App() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#080816] via-transparent to-black/20 z-10 pointer-events-none" />
 
                 {/* Hero content area (Single Column Layout) */}
-                <div className="absolute inset-0 z-20 flex items-center justify-start px-6 sm:px-12 md:px-20 lg:px-32 pt-20">
+                <div className="relative w-full min-h-screen z-20 flex items-center justify-start px-6 sm:px-12 md:px-20 lg:px-32 pt-28 pb-20">
                   <div className="flex flex-col justify-center text-left w-full max-w-3xl">
                     
                     {/* Profile Picture at the top of the text block */}
