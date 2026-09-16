@@ -17,11 +17,12 @@ import { Tilt } from "react-tilt";
 import HeroImg from "./images/HeroImage.png";
 import { Bio } from "./data/constants";
 
-// Import original background elements
+import Certifications from "./components/sections/Certifications";
 import StarCanvas from "./components/canvas/Stars";
 import HeroBgAnimation from "./components/HeroBgAnimation";
 
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Github, Linkedin, FileText } from "lucide-react";
+import { motion, useScroll, useSpring } from "motion/react";
 
 const BG_VIDEO = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260319_055001_8e16d972-3b2b-441c-86ad-2901a54682f9.mp4";
 
@@ -48,10 +49,49 @@ const Wrapper = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%);
 `;
 
+const ScrollProgressBar = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #945cf2, #0046d1, #cc00bb);
+  transform-origin: 0%;
+  z-index: 9999;
+`;
+
+const SocialButton = styled(motion.a)`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.primary};
+    background: rgba(255, 255, 255, 0.08);
+  }
+`;
+
 function App() {
   const [openModal, setOpenModal] = useState<{ state: boolean; project: any }>({
     state: false,
     project: null,
+  });
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
   });
 
   const scrollToPortfolio = () => {
@@ -64,7 +104,7 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <BrowserRouter basename={import.meta.env.BASE_URL}>
-        {/* Restored Original Portfolio Navbar */}
+        <ScrollProgressBar style={{ scaleX }} />
         <Navbar />
         <Body>
           <AnimatePresence>
@@ -73,13 +113,13 @@ function App() {
               {/* Root Liquid Glass Hero Container */}
               <div id="About" className="relative w-full min-h-screen overflow-hidden bg-[#080816] flex flex-col">
                 
-                {/* Default Background Particle Animations (Loaded instantly) */}
+                {/* Default Background Particle Animations */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                   <StarCanvas />
                   <HeroBgAnimation />
                 </div>
                 
-                {/* Looping Background Video Overlay (Blended on top of stars) */}
+                {/* Looping Background Video Overlay */}
                 <video
                   className="absolute top-0 left-0 w-full h-full object-cover opacity-75 pointer-events-none z-0"
                   autoPlay
@@ -89,17 +129,27 @@ function App() {
                   src={BG_VIDEO}
                 />
                 
-                {/* Overlay for cinematic ambient lighting and high readability */}
+                {/* Overlay for cinematic ambient lighting */}
                 <div className="absolute inset-0 bg-black/10 z-10 pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/25 to-transparent z-10 pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#080816] via-transparent to-black/20 z-10 pointer-events-none" />
 
-                {/* Hero content area (Single Column Layout) */}
+                {/* Hero content area */}
                 <div className="relative w-full min-h-screen z-20 flex items-center justify-start px-6 sm:px-12 md:px-20 lg:px-32 pt-28 pb-20">
-                  <div className="flex flex-col justify-center text-left w-full max-w-3xl">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    className="flex flex-col justify-center text-left w-full max-w-3xl"
+                  >
                     
-                    {/* Profile Picture at the top of the text block */}
-                    <div className="mb-6">
+                    {/* Profile Picture */}
+                    <motion.div
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.6, delay: 0.1 }}
+                      className="mb-6"
+                    >
                       <Tilt options={{ max: 15, scale: 1.02, speed: 400 }}>
                         <div className="w-48 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden border border-white/15 bg-white/5 backdrop-blur-md shadow-2xl animate-[float_6s_ease-in-out_infinite] flex items-center justify-center">
                           <img
@@ -109,15 +159,25 @@ function App() {
                           />
                         </div>
                       </Tilt>
-                    </div>
+                    </motion.div>
 
-                    <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight tracking-tight mb-4">
+                    <motion.h1
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                      className="text-white text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight tracking-tight mb-4"
+                    >
                       Hi, I am <br />
                       <span className="text-[#945cf2] font-semibold">{Bio.name}</span>
-                    </h1>
+                    </motion.h1>
                     
                     {/* Typewriter roles */}
-                    <div className="text-white text-xl sm:text-2xl lg:text-3xl font-medium mb-5 flex flex-wrap items-center gap-2">
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.3 }}
+                      className="text-white text-xl sm:text-2xl lg:text-3xl font-medium mb-5 flex flex-wrap items-center gap-2"
+                    >
                       <span>I am an</span>
                       <span className="text-[#945cf2] font-semibold">
                         <Typewriter
@@ -128,29 +188,63 @@ function App() {
                           }}
                         />
                       </span>
-                    </div>
+                    </motion.div>
 
-                    <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-8 max-w-md">
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.6, delay: 0.4 }}
+                      className="text-white/60 text-sm sm:text-base leading-relaxed mb-8 max-w-xl"
+                    >
                       {Bio.description}
-                    </p>
+                    </motion.p>
                     
-                    {/* Restored Custom Interactive Resume Switch Button */}
-                    <div className="w-[180px] flex justify-start">
-                      <Switch href={Bio.resume} />
-                    </div>
+                    {/* Primary CTAs */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.5 }}
+                      className="flex flex-wrap items-center gap-4"
+                    >
+                      <div className="w-[180px]">
+                        <Switch href={Bio.resume} />
+                      </div>
+                      <SocialButton
+                        href={Bio.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Github size={18} />
+                        GitHub
+                      </SocialButton>
+                      <SocialButton
+                        href={Bio.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Linkedin size={18} />
+                        LinkedIn
+                      </SocialButton>
+                    </motion.div>
 
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Scroll Indicator */}
                 <div className="absolute bottom-6 right-6 z-30 flex items-center justify-center">
-                  <button 
+                  <motion.button 
                     onClick={scrollToPortfolio}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                     className="w-10 h-10 rounded-full liquid-glass text-white/75 hover:text-white transition-colors cursor-pointer animate-bounce flex items-center justify-center"
                     aria-label="Scroll down"
                   >
                     <ArrowDown size={18} />
-                  </button>
+                  </motion.button>
                 </div>
               </div>
 
@@ -166,6 +260,7 @@ function App() {
                 <Wrapper>
                   <Experience />
                 </Wrapper>
+                <Certifications />
                 <Projects openModal={openModal} setOpenModal={setOpenModal} />
                 <Wrapper>
                   <Education />

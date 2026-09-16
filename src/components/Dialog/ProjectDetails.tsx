@@ -12,20 +12,19 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(4px);
   display: flex;
-  align-items: top;
+  align-items: flex-start;
   justify-content: center;
-  overflow-y: scroll;
+  overflow-y: auto;
   transition: all 0.5s ease;
 `;
 
-// UIverse styled project details glassmorphic card modal
 const Wrapper = styled.div`
   max-width: 800px;
   width: 100%;
   border-radius: 20px;
   margin: 50px 12px;
   height: min-content;
-  background: rgba(18, 18, 38, 0.85);
+  background: rgba(18, 18, 38, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -73,6 +72,7 @@ const Desc = styled.p`
 
 const Image = styled.img`
   width: 100%;
+  max-height: 400px;
   object-fit: cover;
   border-radius: 12px;
   margin-top: 30px;
@@ -149,7 +149,6 @@ const ButtonGroup = styled.div`
   gap: 12px;
 `;
 
-// UIverse Component integration comment: Custom glass border code & live action buttons inside dialog
 const Button = styled.a<{ dull?: boolean }>`
   width: 100%;
   text-align: center;
@@ -191,7 +190,7 @@ const Button = styled.a<{ dull?: boolean }>`
   }
 `;
 
-const ProjectDetails = ({ openModal, setOpenModal }) => {
+const ProjectDetails = ({ openModal, setOpenModal }: { openModal: any; setOpenModal: any }) => {
   const project = openModal?.project;
   return (
     <Modal
@@ -214,7 +213,7 @@ const ProjectDetails = ({ openModal, setOpenModal }) => {
           <Title>{project?.title}</Title>
           <Date>{project?.date}</Date>
           <Tags>
-            {project?.tags.map((tag, index) => (
+            {project?.tags?.map((tag: string, index: number) => (
               <Tag key={`modal-tag-${project?.id}-${index}`}>{tag}</Tag>
             ))}
           </Tags>
@@ -223,36 +222,46 @@ const ProjectDetails = ({ openModal, setOpenModal }) => {
             <>
               <Label>Members</Label>
               <Members>
-                {project?.member.map((member, index) => (
+                {project?.member.map((member: any, index: number) => (
                   <Member key={`modal-member-${project?.id}-${index}`}>
                     <MemberImage src={member.img} alt={member.name} />
                     <MemberName>{member.name}</MemberName>
-                    <a
-                      href={member.github}
-                      target="new"
-                      style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}
-                    >
-                      <GitHub style={{ fontSize: "20px", opacity: 0.8 }} />
-                    </a>
-                    <a
-                      href={member.linkedin}
-                      target="new"
-                      style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center", marginLeft: "8px" }}
-                    >
-                      <LinkedIn style={{ fontSize: "20px", opacity: 0.8 }} />
-                    </a>
+                    {member.github && (
+                      <a
+                        href={member.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}
+                      >
+                        <GitHub style={{ fontSize: "20px", opacity: 0.8 }} />
+                      </a>
+                    )}
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center", marginLeft: "8px" }}
+                      >
+                        <LinkedIn style={{ fontSize: "20px", opacity: 0.8 }} />
+                      </a>
+                    )}
                   </Member>
                 ))}
               </Members>
             </>
           )}
           <ButtonGroup>
-            <Button dull href={project?.github} target="new">
-              View Code
-            </Button>
-            <Button href={project?.webapp} target="new">
-              View Live App
-            </Button>
+            {project?.github && (
+              <Button dull href={project.github} target="_blank" rel="noopener noreferrer">
+                View Code
+              </Button>
+            )}
+            {project?.webapp && (
+              <Button href={project.webapp} target="_blank" rel="noopener noreferrer">
+                {project.webapp === project.github ? "View GitHub Repo" : "View Live App"}
+              </Button>
+            )}
           </ButtonGroup>
         </Wrapper>
       </Container>
@@ -261,4 +270,3 @@ const ProjectDetails = ({ openModal, setOpenModal }) => {
 };
 
 export default ProjectDetails;
-

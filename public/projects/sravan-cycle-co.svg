@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+  <!-- Background -->
+  <rect width="1280" height="720" fill="#09090b"/>
+  
+  <!-- Header / Navbar -->
+  <rect x="0" y="0" width="1280" height="64" fill="#18181b" border-bottom="1px solid rgba(255,255,255,0.08)"/>
+  <circle cx="50" cy="32" r="16" fill="#f43f5e"/>
+  <rect x="80" y="24" width="150" height="16" rx="4" fill="#ffffff"/>
+  <rect x="750" y="26" width="70" height="12" rx="3" fill="#a1a1aa"/>
+  <rect x="840" y="26" width="70" height="12" rx="3" fill="#a1a1aa"/>
+  <rect x="930" y="26" width="70" height="12" rx="3" fill="#a1a1aa"/>
+  <rect x="1080" y="18" width="140" height="28" rx="6" fill="#f43f5e"/>
+  
+  <!-- E-Commerce Hero Banner -->
+  <g transform="translate(40, 88)">
+    <rect width="1200" height="220" rx="16" fill="#18181b" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="60" y="40" width="360" height="28" rx="6" fill="#ffffff"/>
+    <rect x="60" y="80" width="280" height="16" rx="4" fill="#fda4af"/>
+    <rect x="60" y="120" width="140" height="36" rx="8" fill="#f43f5e"/>
+    
+    <!-- Bike Graphic Outline -->
+    <g transform="translate(750, 20)" stroke="#f43f5e" stroke-width="6" fill="none">
+      <circle cx="70" cy="110" r="50"/>
+      <circle cx="250" cy="110" r="50"/>
+      <polyline points="70,110 140,110 180,45 250,110"/>
+      <polyline points="140,110 160,45 80,45"/>
+    </g>
+  </g>
+  
+  <!-- Category Filter Bar -->
+  <g transform="translate(40, 330)">
+    <rect x="0" y="0" width="120" height="32" rx="8" fill="#f43f5e"/>
+    <rect x="135" y="0" width="120" height="32" rx="8" fill="#27272a"/>
+    <rect x="270" y="0" width="120" height="32" rx="8" fill="#27272a"/>
+    <rect x="405" y="0" width="120" height="32" rx="8" fill="#27272a"/>
+  </g>
+  
+  <!-- Bicycle Product Grid -->
+  <!-- Product Card 1 -->
+  <g transform="translate(40, 385)">
+    <rect width="375" height="295" rx="14" fill="#18181b" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="12" y="12" width="351" height="150" rx="10" fill="#27272a"/>
+    <circle cx="187" cy="87" r="45" fill="#f43f5e" opacity="0.2"/>
+    <rect x="20" y="174" width="200" height="16" rx="4" fill="#ffffff"/>
+    <rect x="20" y="198" width="140" height="12" rx="3" fill="#fda4af"/>
+    <rect x="20" y="222" width="100" height="10" rx="2" fill="#71717a"/>
+    <rect x="20" y="248" width="90" height="24" rx="4" fill="#27272a"/>
+    <rect x="260" y="244" width="95" height="32" rx="8" fill="#f43f5e"/>
+  </g>
+  
+  <!-- Product Card 2 -->
+  <g transform="translate(452, 385)">
+    <rect width="375" height="295" rx="14" fill="#18181b" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="12" y="12" width="351" height="150" rx="10" fill="#27272a"/>
+    <circle cx="187" cy="87" r="45" fill="#38bdf8" opacity="0.2"/>
+    <rect x="20" y="174" width="200" height="16" rx="4" fill="#ffffff"/>
+    <rect x="20" y="198" width="140" height="12" rx="3" fill="#7dd3fc"/>
+    <rect x="20" y="222" width="100" height="10" rx="2" fill="#71717a"/>
+    <rect x="20" y="248" width="90" height="24" rx="4" fill="#27272a"/>
+    <rect x="260" y="244" width="95" height="32" rx="8" fill="#f43f5e"/>
+  </g>
+  
+  <!-- Product Card 3 -->
+  <g transform="translate(864, 385)">
+    <rect width="375" height="295" rx="14" fill="#18181b" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="12" y="12" width="351" height="150" rx="10" fill="#27272a"/>
+    <circle cx="187" cy="87" r="45" fill="#fbbf24" opacity="0.2"/>
+    <rect x="20" y="174" width="200" height="16" rx="4" fill="#ffffff"/>
+    <rect x="20" y="198" width="140" height="12" rx="3" fill="#fde68a"/>
+    <rect x="20" y="222" width="100" height="10" rx="2" fill="#71717a"/>
+    <rect x="20" y="248" width="90" height="24" rx="4" fill="#27272a"/>
+    <rect x="260" y="244" width="95" height="32" rx="8" fill="#f43f5e"/>
+  </g>
+</svg>

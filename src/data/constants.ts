@@ -7,9 +7,13 @@ const publicAsset = (path: string) => {
 
 export const Bio = {
   name: "A. Sravan Kumar",
-  roles: ["MCA Student", "Aspiring Software Developer"],
+  roles: [
+    "MCA Graduate",
+    "Aspiring Software Developer",
+    "Python Developer",
+  ],
   description:
-    "MCA student based in Hyderabad, India, with strong foundations in Data Structures, Object-Oriented Programming, and Database Systems. Experienced in building web and machine learning applications using Java and Python. Currently focused on DSA practice and building scalable software systems.",
+    "MCA graduate focused on Python, web development, databases, machine learning, and cloud fundamentals. Experienced in building practical applications with Django, Streamlit, data-driven technologies, and blockchain.",
   location: "Hyderabad, India",
   email: "akkaladevisravankumar@gmail.com",
   github: "https://github.com/sravanakkaladevi",
@@ -23,49 +27,38 @@ export const Bio = {
 
 export const skills = [
   {
-    title: "Core",
+    title: "Programming Languages",
     skills: [
       {
-        name: "Data Structures",
-        image: "https://placehold.co/48x48/1f2937/ffffff?text=DS",
+        name: "Python",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
+        highlight: true,
       },
-      {
-        name: "Algorithms",
-        image: "https://placehold.co/48x48/1f2937/ffffff?text=AL",
-      },
-      {
-        name: "OOP",
-        image: "https://placehold.co/48x48/1f2937/ffffff?text=OOP",
-      },
-      {
-        name: "DBMS",
-        image: "https://placehold.co/48x48/1f2937/ffffff?text=DB",
-      },
-    ],
-  },
-  {
-    title: "Programming",
-    skills: [
       {
         name: "Java",
         image:
           "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
       },
       {
-        name: "Python",
+        name: "JavaScript",
         image:
-          "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
       },
       {
-        name: "C",
+        name: "TypeScript",
         image:
-          "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg",
       },
     ],
   },
   {
-    title: "Web",
+    title: "Backend & Web",
     skills: [
+      {
+        name: "Django",
+        image: "https://cdn.simpleicons.org/django/092E20",
+      },
       {
         name: "HTML",
         image:
@@ -77,72 +70,103 @@ export const skills = [
           "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg",
       },
       {
-        name: "JavaScript",
+        name: "Bootstrap",
         image:
-          "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg",
       },
       {
-        name: "React Js",
-        image:
-          "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg",
-      },
-      {
-        name: "Node Js",
-        image:
-          "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg",
-      },
-    ],
-  },
-  {
-    title: "Frameworks",
-    skills: [
-      {
-        name: "Django",
-        image: "https://cdn.simpleicons.org/django/092E20",
-      },
-      {
-        name: "Spring Boot",
-        image: "https://cdn.simpleicons.org/springboot/6DB33F",
-      },
-      {
-        name: "REST API",
+        name: "REST APIs",
         image: "https://api.iconify.design/hugeicons/api.svg?color=%23FFFFFF",
       },
+      {
+        name: "Streamlit",
+        image: "https://cdn.simpleicons.org/streamlit",
+      },
     ],
   },
   {
-    title: "Database",
+    title: "Data & Machine Learning",
     skills: [
       {
-        name: "SQL",
+        name: "Pandas",
         image:
-          "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg",
       },
       {
-        name: "Oracle DB",
+        name: "NumPy",
         image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg",
+      },
+      {
+        name: "Scikit-learn",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/scikitlearn/scikitlearn-original.svg",
+      },
+      {
+        name: "Matplotlib",
+        image: "https://cdn.simpleicons.org/matplotlib",
+      },
+      {
+        name: "K-Means Clustering",
+        image: "https://api.iconify.design/carbon/chart-cluster-bar.svg?color=%23FFFFFF",
+      },
+    ],
+  },
+  {
+    title: "Databases",
+    skills: [
+      {
+        name: "MySQL",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg",
+      },
+      {
+        name: "SQLite",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/sqlite/sqlite-original.svg",
       },
       {
         name: "PostgreSQL",
         image:
           "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg",
       },
-    ],
-  },
-  {
-    title: "Cloud",
-    skills: [
       {
-        name: "GCP",
+        name: "SQL",
         image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg",
       },
     ],
   },
   {
-    title: "Tools",
+    title: "Blockchain & Web3",
     skills: [
+      {
+        name: "Ethereum",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/ethereum/ethereum-original.svg",
+      },
+      {
+        name: "Solidity",
+        image: "https://cdn.simpleicons.org/solidity",
+      },
+      {
+        name: "Web3.py",
+        image: "https://cdn.simpleicons.org/web3dotjs",
+      },
+      {
+        name: "Ganache",
+        image: "https://cdn.simpleicons.org/ganache",
+      },
+    ],
+  },
+  {
+    title: "Cloud & Tools",
+    skills: [
+      {
+        name: "Google Cloud Platform",
+        image:
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+      },
       {
         name: "Git",
         image:
@@ -166,15 +190,11 @@ export const skills = [
     ],
   },
   {
-    title: "Security Tools",
+    title: "Security",
     skills: [
       {
         name: "Kali Linux",
         image: "https://cdn.simpleicons.org/kalilinux",
-      },
-      {
-        name: "Metasploit",
-        image: "https://cdn.simpleicons.org/metasploit",
       },
       {
         name: "Wireshark",
@@ -187,6 +207,18 @@ export const skills = [
       {
         name: "Burp Suite",
         image: "https://cdn.simpleicons.org/burpsuite",
+      },
+      {
+        name: "Network Security",
+        image: "https://api.iconify.design/mdi/shield-network.svg?color=%23FFFFFF",
+      },
+      {
+        name: "Vulnerability Assessment",
+        image: "https://api.iconify.design/mdi/security.svg?color=%23FFFFFF",
+      },
+      {
+        name: "Threat Modeling",
+        image: "https://api.iconify.design/mdi/bug-outline.svg?color=%23FFFFFF",
       },
     ],
   },
@@ -235,13 +267,33 @@ export const experiences = [
   },
 ];
 
+export const certifications = [
+  {
+    id: 0,
+    img: publicAsset("/logos/microsoft.svg"),
+    title: "Microsoft Certified: Azure AI Fundamentals",
+    issuer: "Microsoft",
+    code: "Exam AI-901",
+    date: "13 September 2026",
+    desc: "Officially earned Microsoft certification demonstrating fundamental knowledge of machine learning, computer vision, natural language processing, and generative AI workloads on Azure.",
+    skills: [
+      "Azure AI Services",
+      "Machine Learning",
+      "Computer Vision",
+      "NLP",
+      "Generative AI",
+    ],
+    doc: "https://drive.google.com/file/d/1dTP4K-Tnp0UUggglKMugU3bFAyGqwzAp/view?usp=sharing",
+  },
+];
+
 export const education = [
   {
     id: 0,
     img: publicAsset("/logos/aurora-logo.png"),
     school: "Aurora's PG College, Hyderabad",
     date: "2024 - 2026",
-    grade: "Pursuing",
+    grade: "Completed",
     desc: "Master of Computer Applications with focus on software development, data structures, and scalable system design.",
     degree: "MCA",
   },
@@ -259,37 +311,117 @@ export const education = [
 export const projects = [
   {
     id: 1,
-    title: "Personal Portfolio Website",
+    title: "OrganChain — Blockchain-Based Organ Donation Tracking System",
     date: "2026",
     description:
-      "A modern developer portfolio built using React and Vite. It showcases projects, skills, and experience with responsive design and smooth animations, along with contact information and social links.",
-    image: publicAsset("/projects/portfolio-website.svg"),
-    tags: ["React", "Vite", "JavaScript", "CSS"],
+      "A Django web application using a private/local Ethereum blockchain through Ganache for tracking donor registration, recipient records, organ matching, transplantation events and blockchain auditability.",
+    image: publicAsset("/projects/organ-donation-blockchain.png"),
+    tags: [
+      "Python",
+      "Django",
+      "SQLite",
+      "Solidity",
+      "Ethereum",
+      "Web3.py",
+      "Ganache",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Bootstrap",
+    ],
     category: "web app",
+    featured: true,
     github:
-      "https://github.com/sravanakkaladevi/sravanakkaladevi.github.io",
-    webapp: "https://akkaladevisravankumar.netlify.app/",
+      "https://github.com/sravanakkaladevi/AN-APPLICATION-FOR-TRACKING-ORGAN-DONATION-IN-HOSPITALS-USING-BLOCKCHAIN",
+    webapp:
+      "https://github.com/sravanakkaladevi/AN-APPLICATION-FOR-TRACKING-ORGAN-DONATION-IN-HOSPITALS-USING-BLOCKCHAIN",
   },
   {
     id: 2,
+    title: "CricSense AI Analytics Dashboard",
+    date: "2026",
+    description:
+      "An AI-powered predictive dashboard application that analyzes historical cricket match data to forecast player scores, runs, and team win probabilities using Python, Scikit-learn, Pandas, and Streamlit.",
+    image: publicAsset("/projects/cricsense-ai.png"),
+    tags: ["Python", "Pandas", "Scikit-learn", "Streamlit", "Machine Learning"],
+    category: "machine learning",
+    featured: true,
+    github: "https://github.com/sravanakkaladevi/CricSense-AI-Dashboard",
+    webapp: "https://github.com/sravanakkaladevi/CricSense-AI-Dashboard",
+  },
+  {
+    id: 3,
+    title: "SRAVAN TRAVEL CO",
+    date: "2025",
+    description:
+      "A modern responsive travel and tour booking web platform featuring destination discovery, interactive booking forms, itinerary guides, and seamless customer user experience.",
+    image: publicAsset("/projects/sravan-travel-co.svg"),
+    tags: ["HTML", "CSS", "JavaScript", "Bootstrap", "Web Development"],
+    category: "web app",
+    featured: true,
+    github: "https://github.com/sravanakkaladevi/SRAVAN-TRAVEL-CO",
+    webapp: "https://sravan-travel-co.vercel.app/",
+  },
+  {
+    id: 4,
+    title: "SRAVAN CYCLE CO",
+    date: "2025",
+    description:
+      "An e-commerce web application for bicycle product showcases, model comparisons, custom specification selection, and interactive shopping workflow.",
+    image: publicAsset("/projects/sravan-cycle-co.svg"),
+    tags: ["HTML", "CSS", "JavaScript", "Web Development"],
+    category: "web app",
+    featured: true,
+    github: "https://github.com/sravanakkaladevi/SRAVAN-CYCLE-CO",
+    webapp: "https://sravan-cycle-co.vercel.app/",
+  },
+  {
+    id: 5,
+    title: "SRAVAN SHIP CO",
+    date: "2025",
+    description:
+      "A logistics and cargo shipping tracking web platform providing vessel schedule tracking, freight rate estimation, and cargo management interfaces.",
+    image: publicAsset("/projects/sravan-ship-co.svg"),
+    tags: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+    category: "web app",
+    featured: true,
+    github: "https://github.com/sravanakkaladevi/SRAVAN-SHIP-CO",
+    webapp: "https://sravan-ship-co.vercel.app/",
+  },
+  {
+    id: 6,
+    title: "WildLife Explorer",
+    date: "2025",
+    description:
+      "An interactive wildlife conservation & species explorer platform detailing endangered species, habitat mapping, biodiversity statistics, and conservation efforts.",
+    image: publicAsset("/projects/wildlife-explorer.svg"),
+    tags: ["Python", "Data Analysis", "HTML", "CSS", "JavaScript"],
+    category: "web app",
+    featured: true,
+    github: "https://github.com/sravanakkaladevi/WildLife-Explorer",
+    webapp: "https://github.com/sravanakkaladevi/WildLife-Explorer",
+  },
+  {
+    id: 7,
     title: "AI-Based Network Intrusion Detection System",
     date: "2025 - 2026",
     description:
-      "A machine learning system that detects network attacks such as DDoS using the CIC-IDS2017 dataset. The project uses Random Forest classification and an interactive Streamlit dashboard for analysis.",
+      "A machine learning cybersecurity system that detects network attacks such as DDoS using the CIC-IDS2017 dataset. Built with Random Forest classification, Pandas, NumPy, Scikit-learn, and an interactive Streamlit dashboard.",
     image: publicAsset("/projects/intrusion-detection.svg"),
-    tags: ["Python", "Pandas", "NumPy", "Scikit-learn", "Streamlit"],
+    tags: ["Python", "Pandas", "NumPy", "Scikit-learn", "Streamlit", "Network Security"],
     category: "machine learning",
+    featured: false,
     github:
       "https://github.com/sravanakkaladevi/AI-Based-Network-Intrusion-Detection-System",
     webapp:
       "https://github.com/sravanakkaladevi/AI-Based-Network-Intrusion-Detection-System",
   },
   {
-    id: 3,
-    title: "Crime Rate Prediction & Analysis using K-Means Clustering",
+    id: 8,
+    title: "Crime Rate Prediction & Analysis using K-Means",
     date: "2025 - 2026",
     description:
-      "A Django-based web application that analyzes crime datasets and groups regions into crime risk zones using K-Means clustering. It includes dataset upload, cleaning, interactive crime maps, and future trend prediction.",
+      "A Django-based web application that analyzes crime datasets and groups regions into crime risk zones using K-Means clustering. Features dataset upload, data cleaning, interactive Folium crime maps, and future trend prediction.",
     image: publicAsset("/projects/crime-rate-analysis.svg"),
     tags: [
       "Python",
@@ -299,53 +431,26 @@ export const projects = [
       "Scikit-learn",
       "Matplotlib",
       "Folium",
-      "HTML",
-      "CSS",
+      "K-Means Clustering",
       "Bootstrap",
     ],
     category: "web app",
+    featured: false,
     github:
       "https://github.com/sravanakkaladevi/CRIME-RATE-PREDICTION-ANALYSIS-USING-K-MEANS-CLUSTERING-ALGORITHM-mini-project",
     webapp:
       "https://github.com/sravanakkaladevi/CRIME-RATE-PREDICTION-ANALYSIS-USING-K-MEANS-CLUSTERING-ALGORITHM-mini-project",
   },
   {
-    id: 4,
-    title: "Blockchain Hospital Organ Donation Tracker",
-    date: "2026",
-    description:
-      "A secure, decentralized medical organ tracking and matching web application built using blockchain concepts. Tracks donor registrations and organ matching logs across hospitals, ensuring high security and integrity.",
-    image: publicAsset("/projects/organ-donation-blockchain.png"),
-    tags: ["Blockchain", "HTML", "CSS", "JavaScript"],
-    category: "web app",
-    github:
-      "https://github.com/sravanakkaladevi/AN-APPLICATION-FOR-TRACKING-ORGAN-DONATION-IN-HOSPITALS-USING-BLOCKCHAIN",
-    webapp:
-      "https://github.com/sravanakkaladevi/AN-APPLICATION-FOR-TRACKING-ORGAN-DONATION-IN-HOSPITALS-USING-BLOCKCHAIN",
-  },
-  {
-    id: 5,
-    title: "CricSense AI Analytics Dashboard",
-    date: "2026",
-    description:
-      "An AI-powered predictive dashboard application that analyzes historical cricket match data to forecast player scores, runs, and team win probabilities using Python, Scikit-learn, and Pandas.",
-    image: publicAsset("/projects/cricsense-ai.png"),
-    tags: ["Python", "Pandas", "Scikit-Learn", "Machine Learning", "Streamlit"],
-    category: "machine learning",
-    github:
-      "https://github.com/sravanakkaladevi/CricSense-AI-Dashboard",
-    webapp:
-      "https://github.com/sravanakkaladevi/CricSense-AI-Dashboard",
-  },
-  {
-    id: 6,
+    id: 9,
     title: "CareerCraft Placement Prep Portal",
     date: "2025",
     description:
       "A full-stack placement preparation web platform providing college students with DSA practice trackers, mock technical interview templates, resume checkers, and DBMS study materials.",
     image: publicAsset("/projects/careercraft-portal.png"),
-    tags: ["HTML", "CSS", "JavaScript", "SQL", "DBMS"],
+    tags: ["HTML", "CSS", "JavaScript", "SQL", "DBMS", "Bootstrap"],
     category: "web app",
+    featured: false,
     github:
       "https://github.com/sravanakkaladevi/CareerCraft-A-Full-Stack-Web-Application-for-Career-Placement-Preparation",
     webapp:

@@ -6,21 +6,32 @@ const Top = styled.div`
   width: 100%;
   display: flex;
   max-width: 100%;
-  gap: 12px;
+  gap: 14px;
+  align-items: center;
 `;
+
 const Image = styled.img`
-  height: 50px;
-  border-radius: 10px;
-  margin-top: 4px;
+  height: 48px;
+  width: 48px;
+  object-fit: contain;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
   transition: transform 0.3s ease;
+
   &:hover {
     transform: scale(1.08) rotate(3deg);
   }
 
   @media only screen and (max-width: 768px) {
     height: 40px;
+    width: 40px;
   }
 `;
+
 const Body = styled.div`
   width: 100%;
   display: flex;
@@ -36,6 +47,7 @@ const Role = styled.div`
     font-size: 15px;
   }
 `;
+
 const Company = styled.div`
   font-size: 14px;
   font-weight: 500;
@@ -45,6 +57,7 @@ const Company = styled.div`
     font-size: 12px;
   }
 `;
+
 const Description = styled.div`
   width: 100%;
   font-size: 15px;
@@ -56,10 +69,12 @@ const Description = styled.div`
     font-size: 13px;
   }
 `;
+
 const Span = styled.div`
   display: -webkit-box;
   max-width: 100%;
 `;
+
 const Skills = styled.div`
   width: 100%;
   display: flex;
@@ -69,7 +84,6 @@ const Skills = styled.div`
   flex-wrap: wrap;
 `;
 
-// UIverse Component integration comment: Interactive glassmorphic skill item tags inside Experience card
 const Skill = styled.div`
   font-size: 13px;
   font-weight: 500;
@@ -95,7 +109,6 @@ const ItemWrapper = styled.div`
   gap: 8px;
 `;
 
-// UIverse Component integration comment: Premium visual state button for credentials
 const CertificateLink = styled.a`
   width: fit-content;
   margin-top: 12px;
@@ -122,21 +135,36 @@ const CertificateLink = styled.a`
 
 const DEFAULT_ORG_LOGO = `${import.meta.env.BASE_URL}logos/org-default.svg`;
 
-const ExperienceCard = ({ experience }) => {
+const ExperienceCard = ({ experience }: { experience: any }) => {
   return (
     <VerticalTimelineElement
       icon={
-        <img
-          width="100%"
-          height="100%"
-          alt={experience.company}
-          style={{ borderRadius: "50%", objectFit: "cover" }}
-          src={experience.img}
-          onError={(e) => {
-            e.currentTarget.onerror = null;
-            e.currentTarget.src = DEFAULT_ORG_LOGO;
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: "50%",
+            background: "#ffffff",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "hidden",
+            padding: "4px",
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.4)",
           }}
-        />
+        >
+          <img
+            width="100%"
+            height="100%"
+            alt={experience.company}
+            style={{ objectFit: "contain", borderRadius: "50%" }}
+            src={experience.img}
+            onError={(e: any) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = DEFAULT_ORG_LOGO;
+            }}
+          />
+        </div>
       }
       contentStyle={{
         display: "flex",
@@ -157,7 +185,8 @@ const ExperienceCard = ({ experience }) => {
       <Top>
         <Image
           src={experience.img}
-          onError={(e) => {
+          alt={experience.company}
+          onError={(e: any) => {
             e.currentTarget.onerror = null;
             e.currentTarget.src = DEFAULT_ORG_LOGO;
           }}
@@ -173,14 +202,14 @@ const ExperienceCard = ({ experience }) => {
           <Skills>
             <b style={{ color: "#a5a6c5", fontSize: "14px" }}>Skills:</b>
             <ItemWrapper>
-              {experience?.skills?.map((skill, index) => (
+              {experience?.skills?.map((skill: string, index: number) => (
                 <Skill key={`exp-skill-${index}`}>{skill}</Skill>
               ))}
             </ItemWrapper>
           </Skills>
         )}
         {experience?.doc && (
-          <CertificateLink href={experience.doc} target="_blank">
+          <CertificateLink href={experience.doc} target="_blank" rel="noopener noreferrer">
             View Certificate
           </CertificateLink>
         )}
@@ -190,4 +219,3 @@ const ExperienceCard = ({ experience }) => {
 };
 
 export default ExperienceCard;
-

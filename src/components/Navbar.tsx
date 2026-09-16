@@ -3,6 +3,7 @@ import { Link as LinkR } from "react-router-dom";
 import styled, { useTheme } from "styled-components";
 import { Bio } from "../data/constants";
 import { MenuRounded } from "@mui/icons-material";
+import { motion } from "motion/react";
 
 const Nav = styled.div`
   background-color: rgba(8, 8, 22, 0.75);
@@ -20,9 +21,10 @@ const Nav = styled.div`
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 `;
+
 const ColorText = styled.span`
   color: ${({ theme }) => theme.primary};
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
 `;
 
@@ -35,15 +37,18 @@ const NavbarContainer = styled.div`
   justify-content: space-between;
   font-size: 1rem;
 `;
+
 const NavLogo = styled(LinkR)`
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   font-weight: 600;
-  font-size: 19px;
+  font-size: 18px;
   text-decoration: none;
   color: inherit;
-  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
   &:hover {
     transform: scale(1.02);
   }
@@ -54,9 +59,14 @@ const NavItems = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 28px;
   padding: 0 6px;
   list-style: none;
+
+  @media screen and (max-width: 960px) {
+    gap: 18px;
+    font-size: 14px;
+  }
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -67,15 +77,15 @@ const NavLink = styled.a`
   color: ${({ theme }) => theme.text_primary};
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
   text-decoration: none;
   position: relative;
+  white-space: nowrap;
   
   &:hover {
     color: ${({ theme }) => theme.primary};
   }
 
-  /* UIverse style hover line-draw under links */
   &::after {
     content: "";
     position: absolute;
@@ -93,18 +103,18 @@ const NavLink = styled.a`
 `;
 
 const ButtonContainer = styled.div`
-  width: 80%;
-  height: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   padding: 0 6px;
+  flex-shrink: 0;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
 `;
 
-const GithubButton = styled.a`
+const GithubButton = styled(motion.a)`
   border: 1.5px solid ${({ theme }) => theme.primary}aa;
   color: ${({ theme }) => theme.text_primary};
   justify-content: center;
@@ -112,26 +122,21 @@ const GithubButton = styled.a`
   align-items: center;
   border-radius: 20px;
   cursor: pointer;
-  padding: 10px 22px;
-  font-size: 15px;
+  padding: 9px 20px;
+  font-size: 14px;
   font-weight: 600;
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   text-decoration: none;
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
 
   &:hover {
     background: ${({ theme }) => theme.primary};
     border-color: ${({ theme }) => theme.primary};
     color: #ffffff;
-    transform: translateY(-3px) scale(1.04);
     box-shadow: 0 8px 24px ${({ theme }) => theme.primary}4c, 0 0 15px ${({ theme }) => theme.primary}26;
-  }
-
-  &:active {
-    transform: translateY(-1px) scale(0.97);
   }
 `;
 
@@ -191,6 +196,7 @@ const Navbar = () => {
           <NavLink href="#About">About</NavLink>
           <NavLink href="#Skills">Skills</NavLink>
           <NavLink href="#Experience">Experience</NavLink>
+          <NavLink href="#Certifications">Certifications</NavLink>
           <NavLink href="#Projects">Projects</NavLink>
           <NavLink href="#Education">Education</NavLink>
           <NavLink href="#Contact">Contact</NavLink>
@@ -207,6 +213,9 @@ const Navbar = () => {
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#Experience">
               Experience
             </NavLink>
+            <NavLink onClick={() => setIsOpen(!isOpen)} href="#Certifications">
+              Certifications
+            </NavLink>
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#Projects">
               Projects
             </NavLink>
@@ -218,7 +227,10 @@ const Navbar = () => {
             </NavLink>
             <GithubButton
               href={Bio.github}
-              target="_Blank"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               style={{
                 background: theme.primary,
                 color: theme.text_primary,
@@ -233,7 +245,13 @@ const Navbar = () => {
         )}
 
         <ButtonContainer>
-          <GithubButton href={Bio.github} target="_Blank">
+          <GithubButton
+            href={Bio.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             Github Profile
           </GithubButton>
         </ButtonContainer>
@@ -243,4 +261,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

@@ -1,7 +1,7 @@
 {
   "name": "3d-portfolio-website",
   "version": "0.1.1",
-  "homepage":"https://sravanakkaladevi.github.io/sravan-portfolio",
+  "homepage": "https://sravanakkaladevi.github.io/sravan-portfolio",
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^4.1.0",
@@ -19,6 +19,7 @@
     "framer-motion": "^11.0.5",
     "lucide-react": "^0.344.0",
     "maath": "^0.10.7",
+    "motion": "^13.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",

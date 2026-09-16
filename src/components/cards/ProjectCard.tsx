@@ -1,46 +1,70 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "motion/react";
+import { Github, ExternalLink } from "lucide-react";
 
-// UIverse Component integration comment: Glassmorphic Project Card with glow states on hover
-const Card = styled.div`
-  width: 330px;
-  height: 490px;
-  background: rgba(18, 18, 38, 0.4);
+const Card = styled(motion.div)`
+  width: 340px;
+  min-height: 480px;
+  height: auto;
+  background: rgba(18, 18, 38, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.08);
   cursor: pointer;
-  border-radius: 16px;
+  border-radius: 20px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   overflow: hidden;
-  padding: 24px 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  gap: 12px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
 
   &:hover {
-    transform: translateY(-8px);
     border-color: ${({ theme }) => theme.primary}80;
     box-shadow: 
       0 20px 40px rgba(0, 0, 0, 0.5),
       0 0 30px ${({ theme }) => theme.primary}26;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 340px;
+  }
 `;
 
-const Image = styled.img`
+const ImageWrapper = styled.div`
   width: 100%;
   height: 180px;
-  background-color: rgba(255, 255, 255, 0.02);
   border-radius: 12px;
-  object-fit: cover;
+  overflow: hidden;
+  position: relative;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: transform 0.4s ease;
-  
-  ${Card}:hover & {
-    transform: scale(1.03);
-  }
+  background-color: rgba(255, 255, 255, 0.02);
+`;
+
+const Image = styled(motion.img)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const FeaturedBadge = styled.span`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: ${({ theme }) => theme.primary};
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 2;
 `;
 
 const Tags = styled.div`
@@ -49,7 +73,7 @@ const Tags = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 4px;
+  margin-top: 2px;
 `;
 
 const Tag = styled.span`
@@ -68,74 +92,92 @@ const Details = styled.div`
   flex-direction: column;
   gap: 4px;
   padding: 0px 2px;
+  flex-grow: 1;
 `;
 
 const Title = styled.h3`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: ${({ theme }) => theme.text_primary};
-  opacity: 0.9;
-  overflow: hidden;
-  display: -webkit-box;
-  max-width: 100%;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
+  opacity: 0.95;
+  line-height: 1.35;
+  margin-bottom: 2px;
 `;
 
 const Date = styled.div`
   font-size: 12px;
-  margin-left: 2px;
   font-weight: 400;
   color: ${({ theme }) => theme.text_secondary}a0;
-  @media only screen and (max-width: 768px) {
-    font-size: 10px;
-  }
 `;
 
 const Description = styled.p`
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13.5px;
   color: ${({ theme }) => theme.text_secondary};
-  overflow: hidden;
-  margin-top: 8px;
-  display: -webkit-box;
-  max-width: 100%;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
+  margin-top: 6px;
   line-height: 1.5;
 `;
 
-const Members = styled.div`
+const CardFooter = styled.div`
   display: flex;
   align-items: center;
-  padding-left: 10px;
+  justify-content: space-between;
+  gap: 8px;
   margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 `;
 
-const Avatar = styled.img`
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  margin-left: -10px;
-  background-color: ${({ theme }) => theme.white};
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  border: 2px solid rgba(18, 18, 38, 0.9);
-  transition: transform 0.2s ease;
-  
+const ActionButton = styled(motion.a)<{ primary?: boolean }>`
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  background: ${({ primary, theme }) =>
+    primary ? theme.primary : "rgba(255, 255, 255, 0.05)"};
+  color: ${({ primary, theme }) => (primary ? "#ffffff" : theme.text_primary)};
+  border: 1px solid
+    ${({ primary, theme }) =>
+      primary ? "transparent" : "rgba(255, 255, 255, 0.1)"};
+  transition: all 0.2s ease;
+
   &:hover {
-    transform: translateY(-4px) scale(1.1);
-    z-index: 10;
+    background: ${({ primary, theme }) =>
+      primary ? theme.primary : "rgba(255, 255, 255, 0.1)"};
   }
 `;
 
-const ProjectCard = ({ project, setOpenModal }) => {
+const DEFAULT_PROJECT_SVG = `${import.meta.env.BASE_URL}projects/portfolio-website.svg`;
+
+const ProjectCard = ({ project, setOpenModal }: { project: any; setOpenModal: any }) => {
   return (
-    <Card className="liquid-glass" onClick={() => setOpenModal({ state: true, project: project })}>
-      <Image src={project.image} alt={project.title} />
+    <Card
+      className="liquid-glass"
+      whileHover={{ y: -6, scale: 1.01 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ type: "spring", stiffness: 350, damping: 20 }}
+      onClick={() => setOpenModal({ state: true, project: project })}
+    >
+      <ImageWrapper>
+        {project.featured && <FeaturedBadge>Featured</FeaturedBadge>}
+        <Image
+          src={project.image}
+          alt={project.title}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.4 }}
+          onError={(e: any) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = DEFAULT_PROJECT_SVG;
+          }}
+        />
+      </ImageWrapper>
       <Tags>
-        {project.tags?.map((tag, index) => (
+        {project.tags?.map((tag: string, index: number) => (
           <Tag key={`project-tag-${project.id}-${index}`}>{tag}</Tag>
         ))}
       </Tags>
@@ -144,18 +186,50 @@ const ProjectCard = ({ project, setOpenModal }) => {
         <Date>{project.date}</Date>
         <Description>{project.description}</Description>
       </Details>
-      <Members>
-        {project.member?.map((member, index) => (
-          <Avatar
-            key={`project-member-${project.id}-${index}`}
-            src={member.img}
-            alt={member.name}
-          />
-        ))}
-      </Members>
+      <CardFooter>
+        <ActionButton
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Github size={14} />
+          View Code
+        </ActionButton>
+        {project.webapp && project.webapp !== project.github ? (
+          <ActionButton
+            primary
+            href={project.webapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <ExternalLink size={14} />
+            Live Demo
+          </ActionButton>
+        ) : (
+          <ActionButton
+            primary
+            as="button"
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setOpenModal({ state: true, project: project });
+            }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <ExternalLink size={14} />
+            Details
+          </ActionButton>
+        )}
+      </CardFooter>
     </Card>
   );
 };
 
 export default ProjectCard;
-

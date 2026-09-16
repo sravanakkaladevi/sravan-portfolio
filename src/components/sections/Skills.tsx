@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { skills } from "../../data/constants";
 import { Tilt } from "react-tilt";
+import { motion } from "motion/react";
 
 const Container = styled.div`
   display: flex;
@@ -12,6 +13,7 @@ const Container = styled.div`
   align-items: center;
   padding: 40px 0px;
 `;
+
 const Wrapper = styled.div`
   position: relative;
   display: flex;
@@ -66,7 +68,6 @@ const SkillsContainer = styled.div`
   justify-content: center;
 `;
 
-// UIverse styled premium glassmorphism card with neon border pulse on hover
 const Skill = styled.div`
   width: 100%;
   max-width: 500px;
@@ -117,32 +118,23 @@ const SkillList = styled.div`
   margin-bottom: 10px;
 `;
 
-// UIverse Component integration comment: Interactive glassmorphic skill tags
-const SkillItem = styled.div`
+const SkillItem = styled(motion.div)<{ isHighlighted?: boolean }>`
   font-size: 15px;
   font-weight: 500;
   color: ${({ theme }) => theme.text_primary}dd;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: ${({ isHighlighted, theme }) =>
+    isHighlighted ? `${theme.primary}20` : "rgba(255, 255, 255, 0.03)"};
+  border: 1px solid
+    ${({ isHighlighted, theme }) =>
+      isHighlighted ? `${theme.primary}aa` : "rgba(255, 255, 255, 0.08)"};
   border-radius: 12px;
   padding: 10px 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: ${({ theme }) => theme.primary}aa;
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 6px 18px ${({ theme }) => theme.primary}33;
-  }
-
-  &:active {
-    transform: translateY(-1px) scale(0.97);
-  }
+  position: relative;
 
   @media (max-width: 768px) {
     font-size: 13px;
@@ -154,6 +146,18 @@ const SkillItem = styled.div`
   }
 `;
 
+const PrimaryBadge = styled.span`
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: ${({ theme }) => theme.primary};
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-left: 4px;
+  letter-spacing: 0.5px;
+`;
+
 const SkillImage = styled.img`
   width: 22px;
   height: 22px;
@@ -163,31 +167,56 @@ const Skills = () => {
   return (
     <Container id="Skills">
       <Wrapper>
-        <Title>Skills</Title>
-        <Desc
-          style={{
-            marginBottom: "30px",
-          }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}
         >
-          Core computer science, programming, web, database, and tooling skills
-          I actively use while building projects.
-        </Desc>
+          <Title>Skills</Title>
+          <Desc style={{ marginBottom: "30px" }}>
+            Technical competencies &amp; core practical stack used in building scalable applications.
+          </Desc>
+        </motion.div>
 
         <SkillsContainer>
           {skills.map((skill, index) => (
-            <Tilt key={`skill-group-${index}`} options={{ max: 10, scale: 1.01 }}>
-              <Skill className="liquid-glass">
-                <SkillTitle>{skill.title}</SkillTitle>
-                <SkillList>
-                  {skill.skills.map((item, index_x) => (
-                    <SkillItem key={`skill-x-${index_x}`}>
-                      <SkillImage src={item.image} alt={item.name} />
-                      {item.name}
-                    </SkillItem>
-                  ))}
-                </SkillList>
-              </Skill>
-            </Tilt>
+            <motion.div
+              key={`skill-group-${index}`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              style={{ width: "100%", maxWidth: "500px", display: "flex", justifyContent: "center" }}
+            >
+              <Tilt options={{ max: 8, scale: 1.01 }}>
+                <Skill className="liquid-glass">
+                  <SkillTitle>{skill.title}</SkillTitle>
+                  <SkillList>
+                    {skill.skills.map((item: any, index_x: number) => (
+                      <SkillItem
+                        key={`skill-x-${index_x}`}
+                        isHighlighted={item.highlight}
+                        whileHover={{ scale: 1.05, y: -3 }}
+                        whileTap={{ scale: 0.97 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                      >
+                        <SkillImage
+                          src={item.image}
+                          alt={item.name}
+                          onError={(e: any) => {
+                            e.currentTarget.style.display = "none";
+                          }}
+                        />
+                        {item.name}
+                        {item.highlight && <PrimaryBadge>Primary</PrimaryBadge>}
+                      </SkillItem>
+                    ))}
+                  </SkillList>
+                </Skill>
+              </Tilt>
+            </motion.div>
           ))}
         </SkillsContainer>
       </Wrapper>
@@ -196,4 +225,3 @@ const Skills = () => {
 };
 
 export default Skills;
-

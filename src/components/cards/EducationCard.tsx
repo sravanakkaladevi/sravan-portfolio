@@ -6,21 +6,32 @@ const Top = styled.div`
   width: 100%;
   display: flex;
   max-width: 100%;
-  gap: 12px;
+  gap: 14px;
+  align-items: center;
 `;
+
 const Image = styled.img`
-  height: 50px;
-  border-radius: 10px;
-  margin-top: 4px;
+  height: 48px;
+  width: 48px;
+  object-fit: contain;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
   transition: transform 0.3s ease;
+
   &:hover {
     transform: scale(1.08) rotate(-3deg);
   }
 
   @media only screen and (max-width: 768px) {
     height: 40px;
+    width: 40px;
   }
 `;
+
 const Body = styled.div`
   width: 100%;
   display: flex;
@@ -36,6 +47,7 @@ const Name = styled.div`
     font-size: 15px;
   }
 `;
+
 const Degree = styled.div`
   font-size: 14px;
   font-weight: 500;
@@ -45,6 +57,7 @@ const Degree = styled.div`
     font-size: 12px;
   }
 `;
+
 const Date = styled.div`
   font-size: 12px;
   font-weight: 400;
@@ -54,6 +67,7 @@ const Date = styled.div`
     font-size: 10px;
   }
 `;
+
 const Grade = styled.div`
   font-size: 14px;
   font-weight: 500;
@@ -75,19 +89,41 @@ const Description = styled.div`
     font-size: 13px;
   }
 `;
+
 const Span = styled.div``;
 
-const EducationCard = ({ education }) => {
+const DEFAULT_ORG_LOGO = `${import.meta.env.BASE_URL}logos/org-default.svg`;
+
+const EducationCard = ({ education }: { education: any }) => {
   return (
     <VerticalTimelineElement
       icon={
-        <img
-          width="100%"
-          height="100%"
-          alt={education.school}
-          style={{ borderRadius: "50%", objectFit: "cover" }}
-          src={education.img}
-        />
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: "50%",
+            background: "#ffffff",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "hidden",
+            padding: "4px",
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.4)",
+          }}
+        >
+          <img
+            width="100%"
+            height="100%"
+            alt={education.school}
+            style={{ objectFit: "contain", borderRadius: "50%" }}
+            src={education.img}
+            onError={(e: any) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = DEFAULT_ORG_LOGO;
+            }}
+          />
+        </div>
       }
       contentStyle={{
         display: "flex",
@@ -106,7 +142,14 @@ const EducationCard = ({ education }) => {
       date={education.date}
     >
       <Top>
-        <Image src={education.img} alt={education.school} />
+        <Image
+          src={education.img}
+          alt={education.school}
+          onError={(e: any) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = DEFAULT_ORG_LOGO;
+          }}
+        />
         <Body>
           <Name>{education.school}</Name>
           <Degree>{education.degree}</Degree>
@@ -125,4 +168,3 @@ const EducationCard = ({ education }) => {
 };
 
 export default EducationCard;
-

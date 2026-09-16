@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { projects } from "../../data/constants";
 import ProjectCard from "../cards/ProjectCard";
+import { motion, AnimatePresence } from "motion/react";
 
 const Container = styled.div`
   margin-top: 100px;
@@ -13,6 +14,7 @@ const Container = styled.div`
   padding: 0 16px;
   align-items: center;
 `;
+
 const Wrapper = styled.div`
   position: relative;
   display: flex;
@@ -58,7 +60,6 @@ const Desc = styled.div`
   }
 `;
 
-// UIverse Component integration comment: Premium glass pill tab selector group
 const ToggleButtonGroup = styled.div`
   display: flex;
   background: rgba(18, 18, 38, 0.45);
@@ -76,7 +77,7 @@ const ToggleButtonGroup = styled.div`
   }
 `;
 
-const ToggleButton = styled.div<{ active?: boolean }>`
+const ToggleButton = styled(motion.div)<{ active?: boolean }>`
   padding: 8px 20px;
   border-radius: 10px;
   cursor: pointer;
@@ -115,24 +116,45 @@ const CardContainer = styled.div`
   margin-top: 20px;
 `;
 
-const Projects = ({ openModal, setOpenModal }) => {
+const Projects = ({ openModal, setOpenModal }: { openModal: any; setOpenModal: any }) => {
   const [toggle, setToggle] = useState("all");
+
+  const displayedProjects =
+    toggle === "all"
+      ? projects
+      : toggle === "featured"
+      ? projects.filter((item) => item.featured)
+      : projects.filter((item) => item.category === toggle);
+
   return (
     <Container id="Projects">
       <Wrapper>
-        <Title>Projects</Title>
-        <Desc
-          style={{
-            marginBottom: "30px",
-          }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}
         >
-          Selected projects in web development and machine learning built during
-          my MCA journey.
-        </Desc>
+          <Title>Projects Showcase</Title>
+          <Desc style={{ marginBottom: "20px" }}>
+            Featured practical applications built with Django, Python, Streamlit, data science, and blockchain.
+          </Desc>
+        </motion.div>
+
         <ToggleButtonGroup>
+          <ToggleButton
+            active={toggle === "featured"}
+            onClick={() => setToggle("featured")}
+            whileTap={{ scale: 0.95 }}
+          >
+            FEATURED
+          </ToggleButton>
+          <Divider />
           <ToggleButton
             active={toggle === "all"}
             onClick={() => setToggle("all")}
+            whileTap={{ scale: 0.95 }}
           >
             ALL
           </ToggleButton>
@@ -140,42 +162,38 @@ const Projects = ({ openModal, setOpenModal }) => {
           <ToggleButton
             active={toggle === "web app"}
             onClick={() => setToggle("web app")}
+            whileTap={{ scale: 0.95 }}
           >
             WEB APPS
           </ToggleButton>
           <Divider />
           <ToggleButton
-            active={toggle === "android app"}
-            onClick={() => setToggle("android app")}
-          >
-            ANDROID APPS
-          </ToggleButton>
-          <Divider />
-          <ToggleButton
             active={toggle === "machine learning"}
             onClick={() => setToggle("machine learning")}
+            whileTap={{ scale: 0.95 }}
           >
             MACHINE LEARNING
           </ToggleButton>
         </ToggleButtonGroup>
+
         <CardContainer>
-          {toggle === "all" &&
-            projects.map((project) => (
-              <ProjectCard
-                key={`project-all-${project.id}`}
-                project={project}
-                setOpenModal={setOpenModal}
-              />
+          <AnimatePresence mode="popLayout">
+            {displayedProjects.map((project, index) => (
+              <motion.div
+                key={`project-${project.id}`}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                layout
+              >
+                <ProjectCard
+                  project={project}
+                  setOpenModal={setOpenModal}
+                />
+              </motion.div>
             ))}
-          {projects
-            .filter((item) => item.category === toggle)
-            .map((project) => (
-              <ProjectCard
-                key={`project-filter-${project.id}`}
-                project={project}
-                setOpenModal={setOpenModal}
-              />
-            ))}
+          </AnimatePresence>
         </CardContainer>
       </Wrapper>
     </Container>
@@ -183,4 +201,3 @@ const Projects = ({ openModal, setOpenModal }) => {
 };
 
 export default Projects;
-

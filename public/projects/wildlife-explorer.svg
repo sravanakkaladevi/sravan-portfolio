@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+  <!-- Background -->
+  <rect width="1280" height="720" fill="#022c22"/>
+  
+  <!-- Header / Navbar -->
+  <rect x="0" y="0" width="1280" height="64" fill="#064e3b" border-bottom="1px solid rgba(255,255,255,0.08)"/>
+  <circle cx="50" cy="32" r="16" fill="#10b981"/>
+  <rect x="80" y="24" width="160" height="16" rx="4" fill="#ffffff"/>
+  <rect x="750" y="26" width="70" height="12" rx="3" fill="#a7f3d0"/>
+  <rect x="840" y="26" width="70" height="12" rx="3" fill="#a7f3d0"/>
+  <rect x="930" y="26" width="70" height="12" rx="3" fill="#a7f3d0"/>
+  <rect x="1080" y="18" width="140" height="28" rx="6" fill="#10b981"/>
+  
+  <!-- Species Search & Category Bar -->
+  <g transform="translate(40, 88)">
+    <rect width="1200" height="60" rx="12" fill="#064e3b" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="20" y="16" width="400" height="28" rx="6" fill="#022c22"/>
+    <rect x="440" y="16" width="110" height="28" rx="6" fill="#10b981"/>
+    <rect x="560" y="16" width="110" height="28" rx="6" fill="#047857"/>
+    <rect x="680" y="16" width="110" height="28" rx="6" fill="#047857"/>
+  </g>
+  
+  <!-- Main Grid: Left 2/3 Species Cards, Right 1/3 Conservation Stats Widget -->
+  <!-- Species Cards Grid -->
+  <!-- Card 1 -->
+  <g transform="translate(40, 168)">
+    <rect width="380" height="250" rx="14" fill="#064e3b" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="12" y="12" width="356" height="130" rx="10" fill="#047857"/>
+    <rect x="20" y="152" width="180" height="16" rx="4" fill="#ffffff"/>
+    <rect x="20" y="174" width="120" height="12" rx="3" fill="#6ee7b7"/>
+    <rect x="20" y="204" width="90" height="22" rx="6" fill="#991b1b"/>
+    <rect x="260" y="204" width="100" height="26" rx="6" fill="#10b981"/>
+  </g>
+  
+  <!-- Card 2 -->
+  <g transform="translate(440, 168)">
+    <rect width="380" height="250" rx="14" fill="#064e3b" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="12" y="12" width="356" height="130" rx="10" fill="#047857"/>
+    <rect x="20" y="152" width="180" height="16" rx="4" fill="#ffffff"/>
+    <rect x="20" y="174" width="120" height="12" rx="3" fill="#6ee7b7"/>
+    <rect x="20" y="204" width="90" height="22" rx="6" fill="#9a3412"/>
+    <rect x="260" y="204" width="100" height="26" rx="6" fill="#10b981"/>
+  </g>
+  
+  <!-- Card 3 -->
+  <g transform="translate(40, 438)">
+    <rect width="380" height="250" rx="14" fill="#064e3b" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="12" y="12" width="356" height="130" rx="10" fill="#047857"/>
+    <rect x="20" y="152" width="180" height="16" rx="4" fill="#ffffff"/>
+    <rect x="20" y="174" width="120" height="12" rx="3" fill="#6ee7b7"/>
+    <rect x="20" y="204" width="90" height="22" rx="6" fill="#991b1b"/>
+    <rect x="260" y="204" width="100" height="26" rx="6" fill="#10b981"/>
+  </g>
+  
+  <!-- Card 4 -->
+  <g transform="translate(440, 438)">
+    <rect width="380" height="250" rx="14" fill="#064e3b" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="12" y="12" width="356" height="130" rx="10" fill="#047857"/>
+    <rect x="20" y="152" width="180" height="16" rx="4" fill="#ffffff"/>
+    <rect x="20" y="174" width="120" height="12" rx="3" fill="#6ee7b7"/>
+    <rect x="20" y="204" width="90" height="22" rx="6" fill="#854d0e"/>
+    <rect x="260" y="204" width="100" height="26" rx="6" fill="#10b981"/>
+  </g>
+  
+  <!-- Right Sidebar: Conservation Statistics Widget -->
+  <g transform="translate(840, 168)">
+    <rect width="400" height="520" rx="14" fill="#064e3b" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="24" y="24" width="220" height="20" rx="4" fill="#ffffff"/>
+    <rect x="24" y="52" width="160" height="12" rx="3" fill="#6ee7b7"/>
+    
+    <!-- Habitat Map Box -->
+    <rect x="24" y="84" width="352" height="180" rx="10" fill="#022c22"/>
+    <circle cx="200" cy="174" r="50" fill="#10b981" opacity="0.2"/>
+    <circle cx="120" cy="140" r="30" fill="#34d399" opacity="0.3"/>
+    
+    <!-- Stat Metrics -->
+    <rect x="24" y="284" width="352" height="60" rx="8" fill="#047857"/>
+    <rect x="40" y="304" width="180" height="14" rx="3" fill="#ffffff"/>
+    <rect x="300" y="300" width="60" height="24" rx="4" fill="#10b981"/>
+    
+    <rect x="24" y="356" width="352" height="60" rx="8" fill="#047857"/>
+    <rect x="40" y="376" width="180" height="14" rx="3" fill="#ffffff"/>
+    <rect x="300" y="372" width="60" height="24" rx="4" fill="#10b981"/>
+    
+    <rect x="24" y="428" width="352" height="60" rx="8" fill="#047857"/>
+    <rect x="40" y="448" width="180" height="14" rx="3" fill="#ffffff"/>
+    <rect x="300" y="444" width="60" height="24" rx="4" fill="#10b981"/>
+  </g>
+</svg>
